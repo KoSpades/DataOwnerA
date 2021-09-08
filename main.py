@@ -1,16 +1,22 @@
-# This is a sample Python script.
+import requests
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+# data owner A will specify a policy that he wants to create
+
+# The following JSON specifies a policy
+p_one = {"subject": "programB", "object": "fileA", "action": "read"}
+
+# Making a post request (posting the policy) to create a policy
+r_create = requests.post('http://127.0.0.1:8000/policy/', json=p_one)
+
+# The following JSON specifies a policy
+p_two = {"subject": "programB", "object": "fileA", "action": "read"}
+
+# Making a post request (posting the policy) to create a policy
+r_delete = requests.delete('http://127.0.0.1:8000/policy/', json=p_two)
+
+# The following JSON specifie a dataset
+f_one = {"object": "fileA"}
+r_read = requests.get('http://127.0.0.1:8000/policy/', json=f_one)
+print(r_read.json())
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
